@@ -244,7 +244,6 @@ body {
   backdrop-filter: blur(4px);
 }
 
-/* Leaf decoration corners */
 #panel::before, #panel::after {
   content: '🍃';
   position: absolute;
@@ -415,17 +414,19 @@ body {
 /* Reveal modal */
 #reveal-modal{display:none;position:fixed;inset:0;z-index:500;align-items:center;justify-content:center;}
 #reveal-backdrop{position:absolute;inset:0;background:rgba(0,0,0,0.52);}
-#reveal-card{position:relative;background:rgba(255,251,230,.97);border-radius:28px;padding:30px 46px 26px;text-align:center;min-width:240px;z-index:1;animation:revealPop .44s cubic-bezier(.34,1.56,.64,1) forwards;}
+#reveal-card{position:relative;background:rgba(255,251,230,.97);border-radius:28px;padding:26px 40px 22px;text-align:center;min-width:260px;max-width:340px;z-index:1;animation:revealPop .44s cubic-bezier(.34,1.56,.64,1) forwards;}
 .reveal-normal #reveal-card{border:4px solid #d4aa55;box-shadow:0 16px 44px rgba(0,0,0,.3);}
 .reveal-rare   #reveal-card{border:4px solid #ffd700;box-shadow:0 0 52px rgba(255,215,0,.6),0 16px 48px rgba(0,0,0,.4);background:linear-gradient(135deg,rgba(255,251,220,.97),rgba(255,245,175,.97));}
 @keyframes revealPop{0%{transform:scale(.3) translateY(50px);opacity:0}100%{transform:scale(1) translateY(0);opacity:1}}
-#rv-emoji{font-size:76px;line-height:1;display:block;margin-bottom:10px;animation:emojiSpin .56s ease-out forwards;}
+#rv-emoji{font-size:72px;line-height:1;display:block;margin-bottom:8px;animation:emojiSpin .56s ease-out forwards;}
 @keyframes emojiSpin{0%{transform:scale(0) rotate(-180deg)}65%{transform:scale(1.15) rotate(12deg)}100%{transform:scale(1) rotate(0)}}
-#rv-name{font-size:22px;font-weight:900;color:#3a3a1a;margin-bottom:8px;}
-.rv-tag{display:inline-block;border-radius:14px;padding:4px 16px;font-size:13px;font-weight:800;margin-bottom:18px;}
+#rv-name{font-size:22px;font-weight:900;color:#3a3a1a;margin-bottom:4px;}
+#rv-meta{font-size:12px;color:#7a6030;font-weight:700;margin-bottom:8px;letter-spacing:.5px;}
+.rv-tag{display:inline-block;border-radius:14px;padding:4px 16px;font-size:13px;font-weight:800;margin-bottom:12px;}
 .rv-tag.normal{background:#d4f0d4;color:#2a6a2a;border:2px solid #8acc8a;}
 .rv-tag.rare{background:linear-gradient(135deg,#ffd700,#ff8c00);color:#fff;border:none;box-shadow:0 2px 14px rgba(255,200,0,.55);font-size:15px;animation:rarePulse 1s ease-in-out infinite alternate;}
 @keyframes rarePulse{from{box-shadow:0 2px 14px rgba(255,200,0,.55)}to{box-shadow:0 4px 28px rgba(255,140,0,.85)}}
+#rv-desc{font-size:13px;color:#5a4a20;font-weight:600;line-height:1.6;margin-bottom:16px;padding:10px 14px;background:rgba(212,170,85,0.1);border-radius:12px;border-left:3px solid #d4aa55;text-align:left;}
 #rv-close{display:block;margin:0 auto;background:linear-gradient(135deg,#6cc06c,#4aa04a);color:#fff;border:none;border-radius:20px;padding:8px 28px;font-size:15px;font-weight:800;font-family:'Nunito',sans-serif;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.2);transition:transform .1s;}
 #rv-close:hover{transform:scale(1.06);}
 
@@ -433,14 +434,15 @@ body {
 #ultra-screen{display:none;position:fixed;inset:0;z-index:600;align-items:center;justify-content:center;flex-direction:column;overflow:hidden;}
 #ultra-bg{position:absolute;inset:0;animation:ultraBgAnim 3s ease-in-out infinite alternate;}
 @keyframes ultraBgAnim{0%{background:linear-gradient(135deg,#0d0030,#1a0050,#000820)}50%{background:linear-gradient(135deg,#001a40,#400020,#002010)}100%{background:linear-gradient(135deg,#200040,#003020,#400010)}}
-#ultra-content{position:relative;z-index:2;text-align:center;padding:20px;}
+#ultra-content{position:relative;z-index:2;text-align:center;padding:20px;max-width:360px;}
 #ultra-title{font-size:36px;font-weight:900;background:linear-gradient(90deg,#ff0,#f80,#f0f,#0ff,#0f0,#ff0);background-size:400% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:rainbowShift 1.2s linear infinite;margin-bottom:14px;letter-spacing:3px;}
 @keyframes rainbowShift{from{background-position:0%}to{background-position:400%}}
 #ultra-emoji{font-size:110px;line-height:1;display:block;margin-bottom:14px;animation:ultraFloat 2s ease-in-out infinite alternate,ultraGlow 1s ease-in-out infinite alternate;}
 @keyframes ultraFloat{from{transform:translateY(0) scale(1)}to{transform:translateY(-20px) scale(1.08)}}
 @keyframes ultraGlow{from{filter:drop-shadow(0 0 20px #ff0) drop-shadow(0 0 40px #f80)}to{filter:drop-shadow(0 0 32px #f0f) drop-shadow(0 0 64px #0ff)}}
-#ultra-name{font-size:30px;font-weight:900;color:#fff;text-shadow:0 0 22px #ffd700,0 0 44px #ff8c00;margin-bottom:8px;}
-#ultra-subtitle{font-size:14px;color:rgba(255,255,190,.88);font-weight:700;margin-bottom:26px;animation:ultraSubPulse 1.5s ease-in-out infinite alternate;}
+#ultra-name{font-size:28px;font-weight:900;color:#fff;text-shadow:0 0 22px #ffd700,0 0 44px #ff8c00;margin-bottom:6px;}
+#ultra-desc{font-size:13px;color:rgba(255,255,200,.85);font-weight:600;line-height:1.6;margin-bottom:8px;padding:0 10px;}
+#ultra-subtitle{font-size:13px;color:rgba(255,255,190,.7);font-weight:700;margin-bottom:22px;animation:ultraSubPulse 1.5s ease-in-out infinite alternate;}
 @keyframes ultraSubPulse{from{opacity:.65}to{opacity:1}}
 #ultra-close{background:linear-gradient(135deg,#ffd700,#ff8c00);color:#1a0000;border:none;border-radius:24px;padding:11px 40px;font-size:17px;font-weight:900;font-family:'Nunito',sans-serif;cursor:pointer;box-shadow:0 4px 22px rgba(255,180,0,.55);transition:transform .15s,box-shadow .15s;letter-spacing:1px;}
 #ultra-close:hover{transform:scale(1.08);box-shadow:0 6px 34px rgba(255,180,0,.75);}
@@ -449,6 +451,215 @@ body {
 @keyframes particleFly{0%{opacity:1;transform:translate(-50%,-50%) scale(1)}100%{opacity:0;transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) scale(.1)}}
 @keyframes screenShake{0%,100%{transform:translate(0,0)}20%{transform:translate(-6px,4px)}40%{transform:translate(6px,-4px)}60%{transform:translate(-4px,6px)}80%{transform:translate(4px,-5px)}}
 body.screen-shake{animation:screenShake .5s ease-out;}
+
+/* ===== COLLECTION BUTTON ===== */
+#coll-btn {
+  position: fixed;
+  bottom: 22px;
+  right: 22px;
+  background: rgba(255,251,230,0.95);
+  border: 3px solid #d4aa55;
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 800;
+  color: #7a5a18;
+  z-index: 200;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  transition: transform .12s, box-shadow .12s;
+  font-family: 'Nunito', sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+#coll-btn:hover { transform: scale(1.06); box-shadow: 0 6px 22px rgba(0,0,0,0.28); }
+#coll-count {
+  background: linear-gradient(135deg,#6cc06c,#4aa04a);
+  color: #fff;
+  border-radius: 10px;
+  padding: 1px 8px;
+  font-size: 12px;
+}
+
+/* ===== COLLECTION PANEL ===== */
+#coll-panel {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 700;
+  background: rgba(10,20,10,0.82);
+  backdrop-filter: blur(6px);
+  align-items: flex-start;
+  justify-content: center;
+  overflow-y: auto;
+  padding: 20px 12px 40px;
+}
+#coll-panel.open { display: flex; }
+#coll-inner {
+  background: rgba(255,251,230,0.97);
+  border-radius: 28px;
+  border: 4px solid #d4aa55;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  padding: 26px 24px 30px;
+  width: 100%;
+  max-width: 520px;
+  margin: auto;
+}
+#coll-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+#coll-title {
+  font-size: 20px;
+  font-weight: 900;
+  color: #5a3a10;
+}
+#coll-progress-text {
+  font-size: 13px;
+  font-weight: 800;
+  color: #9a7820;
+}
+#coll-close-btn {
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  line-height: 1;
+  color: #9a7820;
+  font-family: 'Nunito', sans-serif;
+}
+#coll-progress-bar-wrap {
+  width: 100%;
+  height: 8px;
+  background: rgba(0,0,0,0.08);
+  border-radius: 4px;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+#coll-progress-bar {
+  height: 100%;
+  background: linear-gradient(to right, #6cc06c, #d4aa55);
+  border-radius: 4px;
+  transition: width 0.5s ease;
+}
+.coll-section-label {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: #9a7820;
+  text-transform: uppercase;
+  margin: 14px 0 8px;
+}
+.coll-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(72px, 1fr));
+  gap: 8px;
+  margin-bottom: 6px;
+}
+.coll-card {
+  border-radius: 16px;
+  padding: 10px 4px 8px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform .14s, box-shadow .14s;
+  position: relative;
+}
+.coll-card.collected {
+  background: rgba(255,255,255,0.85);
+  border: 2px solid #d4aa55;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.coll-card.collected:hover { transform: scale(1.08); box-shadow: 0 4px 16px rgba(0,0,0,0.18); }
+.coll-card.locked {
+  background: rgba(0,0,0,0.07);
+  border: 2px solid rgba(0,0,0,0.1);
+  cursor: default;
+}
+.coll-card-emoji { font-size: 32px; line-height: 1; display: block; margin-bottom: 4px; }
+.coll-card.locked .coll-card-emoji { filter: grayscale(1) opacity(0.3); }
+.coll-card-name { font-size: 10px; font-weight: 800; color: #5a3a10; line-height: 1.2; }
+.coll-card.locked .coll-card-name { color: rgba(0,0,0,0.25); }
+.coll-card-name.unknown { letter-spacing: 2px; color: rgba(0,0,0,0.2); }
+.coll-card .rarity-dot {
+  position: absolute;
+  top: 5px; right: 6px;
+  width: 7px; height: 7px;
+  border-radius: 50%;
+}
+.coll-card.collected .rarity-dot.rare { background: #ff69b4; box-shadow: 0 0 4px #ff69b4; }
+.coll-card.collected .rarity-dot.ultra { background: #ffd700; box-shadow: 0 0 6px #ffd700; }
+
+/* Detail popup inside collection */
+#coll-detail {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 800;
+  align-items: center;
+  justify-content: center;
+}
+#coll-detail.open { display: flex; }
+#coll-detail-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,0.5); }
+#coll-detail-card {
+  position: relative;
+  background: rgba(255,251,230,0.98);
+  border-radius: 26px;
+  padding: 28px 36px 24px;
+  text-align: center;
+  max-width: 300px;
+  width: 90%;
+  z-index: 1;
+  animation: revealPop .3s cubic-bezier(.34,1.56,.64,1) forwards;
+  border: 4px solid #d4aa55;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.35);
+}
+#cd-emoji { font-size: 64px; line-height: 1; display: block; margin-bottom: 10px; }
+#cd-name { font-size: 20px; font-weight: 900; color: #3a3a1a; margin-bottom: 4px; }
+#cd-meta { font-size: 12px; color: #7a6030; font-weight: 700; margin-bottom: 8px; }
+#cd-tag { display: inline-block; border-radius: 14px; padding: 3px 14px; font-size: 12px; font-weight: 800; margin-bottom: 12px; }
+#cd-tag.normal { background: #d4f0d4; color: #2a6a2a; border: 2px solid #8acc8a; }
+#cd-tag.rare { background: linear-gradient(135deg,#ffd700,#ff8c00); color: #fff; border: none; }
+#cd-tag.ultra { background: linear-gradient(90deg,#f0f,#ff0,#0ff); color: #fff; border: none; font-size: 13px; }
+#cd-desc { font-size: 13px; color: #5a4a20; font-weight: 600; line-height: 1.65; margin-bottom: 16px; text-align: left; padding: 10px 12px; background: rgba(212,170,85,0.1); border-radius: 10px; border-left: 3px solid #d4aa55; }
+#cd-close { background: linear-gradient(135deg,#6cc06c,#4aa04a); color: #fff; border: none; border-radius: 18px; padding: 7px 24px; font-size: 14px; font-weight: 800; font-family: 'Nunito', sans-serif; cursor: pointer; }
+#cd-close:hover { transform: scale(1.05); }
+
+/* ===== MUSIC BUTTON ===== */
+#music-btn {
+  position: fixed;
+  bottom: 22px;
+  left: 22px;
+  background: rgba(255,251,230,0.95);
+  border: 3px solid #d4aa55;
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 800;
+  color: #7a5a18;
+  z-index: 200;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  transition: transform .12s, box-shadow .12s, opacity .3s;
+  font-family: 'Nunito', sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+#music-btn:hover { transform: scale(1.06); box-shadow: 0 6px 22px rgba(0,0,0,0.28); }
+#music-btn.muted { opacity: 0.65; }
+#music-note {
+  font-size: 16px;
+  animation: musicPulse 1.8s ease-in-out infinite;
+}
+#music-btn.muted #music-note { animation: none; }
+@keyframes musicPulse {
+  0%,100% { transform: scale(1) rotate(0deg); }
+  30%     { transform: scale(1.18) rotate(-8deg); }
+  60%     { transform: scale(1.1) rotate(6deg); }
+}
 </style>
 </head>
 <body>
@@ -677,7 +888,6 @@ function startSnow(on) {
   clearInterval(snowInterval);
   if(!on) return;
   const sky=document.getElementById('sky');
-  const g=document.getElementById('ground');
   snowInterval=setInterval(()=>{
     const s=document.createElement('div');
     s.className='snowflake'; s.textContent='❄️';
@@ -767,7 +977,6 @@ function updateScene() {
   document.getElementById('char-row').textContent=tod.char;
 
   // ── Sky ──
-  const si = interpTimeline(SKY_TIMELINE, totalH);
   let sp=SKY_TIMELINE[0], sn=SKY_TIMELINE[SKY_TIMELINE.length-1];
   for(let i=0;i<SKY_TIMELINE.length-1;i++){
     if(totalH>=SKY_TIMELINE[i].t&&totalH<SKY_TIMELINE[i+1].t){sp=SKY_TIMELINE[i];sn=SKY_TIMELINE[i+1];break;}
@@ -865,7 +1074,9 @@ setInterval(pickWeather, 3600000);
   <div id="reveal-card">
     <span id="rv-emoji"></span>
     <div id="rv-name"></div>
+    <div id="rv-meta"></div>
     <div id="rv-tag" class="rv-tag normal">普通</div>
+    <div id="rv-desc"></div>
     <button id="rv-close" onclick="closeReveal()">好哒！✓</button>
   </div>
 </div>
@@ -874,226 +1085,627 @@ setInterval(pickWeather, 3600000);
 <div id="ultra-screen">
   <div id="ultra-bg"></div>
   <div id="ultra-content">
-    <div id="ultra-title">✨ 传说级！！！ ✨</div>
-    <span id="ultra-emoji">🌈</span>
-    <div id="ultra-name">彩虹神</div>
-    <div id="ultra-subtitle">极为稀有的传说角色，全宇宙仅此一位！</div>
+    <div id="ultra-title">✨ 传说级 ✨</div>
+    <span id="ultra-emoji">🐷</span>
+    <div id="ultra-name">嫩猪苗</div>
+    <div id="ultra-desc"></div>
+    <div id="ultra-subtitle">极为稀有的传说角色！</div>
     <button id="ultra-close" onclick="closeUltra()">收下啦！🌟</button>
+  </div>
+</div>
+
+<!-- COLLECTION BUTTON -->
+<button id="coll-btn" onclick="openCollection()">
+  🗂️ 图鉴 <span id="coll-count">0/20</span>
+</button>
+
+<!-- MUSIC BUTTON -->
+<button id="music-btn" class="muted" onclick="toggleBGM()">
+  <span id="music-note">🎵</span><span id="music-label">音乐</span>
+</button>
+
+<!-- COLLECTION PANEL -->
+<div id="coll-panel">
+  <div id="coll-inner">
+    <div id="coll-header">
+      <div id="coll-title">🗂️ 居民图鉴</div>
+      <div id="coll-progress-text">0 / 20</div>
+      <button id="coll-close-btn" onclick="closeCollection()">✕</button>
+    </div>
+    <div id="coll-progress-bar-wrap">
+      <div id="coll-progress-bar" style="width:0%"></div>
+    </div>
+    <div class="coll-section-label">普通居民</div>
+    <div class="coll-grid" id="grid-normal"></div>
+    <div class="coll-section-label">✨ 稀有居民</div>
+    <div class="coll-grid" id="grid-rare"></div>
+    <div class="coll-section-label">🌟 传说居民</div>
+    <div class="coll-grid" id="grid-ultra"></div>
+  </div>
+</div>
+
+<!-- COLLECTION DETAIL -->
+<div id="coll-detail">
+  <div id="coll-detail-backdrop" onclick="closeDetail()"></div>
+  <div id="coll-detail-card">
+    <span id="cd-emoji"></span>
+    <div id="cd-name"></div>
+    <div id="cd-meta"></div>
+    <div id="cd-tag" class="normal">普通</div>
+    <div id="cd-desc"></div>
+    <button id="cd-close" onclick="closeDetail()">关闭</button>
   </div>
 </div>
 
 <script>
 (function(){
-const GACHA=[
-  {emoji:'🐻',name:'小熊布丁',rarity:'normal'},
-  {emoji:'🐱',name:'喵咪酱',rarity:'normal'},
-  {emoji:'🐸',name:'呱呱蛙',rarity:'normal'},
-  {emoji:'🐰',name:'兔兔',rarity:'normal'},
-  {emoji:'🐹',name:'仓鼠',rarity:'normal'},
-  {emoji:'🦊',name:'小狐',rarity:'normal'},
-  {emoji:'🐺',name:'月狼',rarity:'normal'},
-  {emoji:'🐭',name:'米鼠',rarity:'normal'},
-  {emoji:'🐮',name:'奶牛',rarity:'normal'},
-  {emoji:'🐷',name:'嫩猪苗',rarity:'ultra'},
-  {emoji:'🐔',name:'叽鸡',rarity:'normal'},
-  {emoji:'🦁',name:'毛狮',rarity:'normal'},
-  {emoji:'🐧',name:'鹅酱',rarity:'normal'},
-  {emoji:'🦔',name:'刺君',rarity:'normal'},
-  {emoji:'🦋',name:'蝴仙',rarity:'rare'},
-  {emoji:'🦄',name:'独角',rarity:'rare'},
-  {emoji:'🐲',name:'小神',rarity:'rare'},
-  {emoji:'🧚',name:'小精',rarity:'rare'},
-  {emoji:'🦚',name:'孔雀',rarity:'rare'},
-  {emoji:'🌈',name:'彩虹',rarity:'rare'},
+// ──────────────────────────────────────────
+//  CHARACTER DATA
+// ──────────────────────────────────────────
+const GACHA = [
+  // Normal ×13
+  { emoji:'🐻', name:'布丁熊',  species:'熊',     personality:'慵懒型', desc:'最爱下午茶，总在树荫下打盹。据说他的蜂蜜松饼是全岛一绝，连汤姆都跑来讨过食谱。',             rarity:'normal' },
+  { emoji:'🐱', name:'喵咪酱',  species:'猫',     personality:'活泼型', desc:'好奇心旺盛，每天都在探索新地方。经常迷路，但总能凭着鼻子找到最好吃的摊位。',               rarity:'normal' },
+  { emoji:'🐸', name:'呱呱',    species:'蛙',     personality:'开朗型', desc:'雨天是他最喜欢的日子，收集了全岛所有颜色的雨伞。晴天反而有点无聊，不断盼着下雨。',         rarity:'normal' },
+  { emoji:'🐰', name:'兔兔',    species:'兔',     personality:'害羞型', desc:'不爱说话，却种了满院子的胡萝卜。每当月亮升起，她会悄悄在花丛里唱只有花朵听得到的歌。',   rarity:'normal' },
+  { emoji:'🐹', name:'仓仓',    species:'仓鼠',   personality:'贪吃型', desc:'嘴里永远塞满了东西，但你永远猜不到他在嚼什么。他说这叫「随机品鉴」，别人都叫这叫贪吃。', rarity:'normal' },
+  { emoji:'🦊', name:'小狐',    species:'狐',     personality:'聪明型', desc:'表面狡黠，内心善良。岛上唯一会修东西的居民，但收费时绝对不手软，一点都不。',             rarity:'normal' },
+  { emoji:'🐺', name:'月狼',    species:'狼',     personality:'酷帅型', desc:'深夜对月长啸——其实只是在练歌，下个月要开演唱会，票已经卖完了。',                         rarity:'normal' },
+  { emoji:'🐭', name:'米米',    species:'鼠',     personality:'厨艺型', desc:'最爱奶酪，但厨艺精通各种料理。她的南瓜汤据说能治愈一切，连感冒和失恋都管用。',             rarity:'normal' },
+  { emoji:'🐮', name:'哞哞',    species:'牛',     personality:'自豪型', desc:'每天认真产奶，以此为荣。不接受任何质疑，也不接受任何建议，只接受称赞。',                   rarity:'normal' },
+  { emoji:'🐔', name:'叽叽',    species:'鸡',     personality:'负责型', desc:'每天清晨五点准时叫醒全岛，风雨无阻，雷打不动。大家又爱又恨，恨的成分略多一些。',           rarity:'normal' },
+  { emoji:'🦁', name:'毛狮',    species:'狮',     personality:'外强内弱型', desc:'看起来威猛，实际上非常怕黑。枕头下藏着一盏小夜灯，还是星星形状的，绝对不承认。',     rarity:'normal' },
+  { emoji:'🐧', name:'企企',    species:'企鹅',   personality:'好奇型', desc:'来自南极的交换生，对热带的一切充满好奇。最爱喝椰汁，每天要喝三杯，已经停不下来了。',     rarity:'normal' },
+  { emoji:'🦔', name:'刺君',    species:'刺猬',   personality:'温柔型', desc:'浑身是刺，却是岛上最温柔的存在。会亲手织毛衣送给每一位朋友，每件都绣上对方的名字。',     rarity:'normal' },
+  // Rare ×6
+  { emoji:'🦋', name:'蝴仙',    species:'蝶灵',   personality:'神秘型', desc:'传说每见到她一次便有好事降临。她的翅膀颜色每天都不同，没有人见过同一花色两次。',         rarity:'rare' },
+  { emoji:'🦄', name:'独角',    species:'独角兽', personality:'珍稀型', desc:'只在彩虹之后的十分钟内现身。许下的愿望必须真心诚意——她一眼就能看穿谎言。',               rarity:'rare' },
+  { emoji:'🐲', name:'小神',    species:'神龙',   personality:'沉睡型', desc:'守护岛屿的小龙，已沉睡三百年。打喷嚏时会下一场小雨，做噩梦时会起一阵薄雾。',             rarity:'rare' },
+  { emoji:'🧚', name:'小精',    species:'森精灵', personality:'灵动型', desc:'能听懂花草的语言，会把植物的心声翻译给岛主听。据说樱花树总在跟她说悄悄话。',             rarity:'rare' },
+  { emoji:'🦚', name:'孔雀',    species:'孔雀',   personality:'华丽型', desc:'每次开屏，方圆百米都会变得闪耀夺目。他非常享受被注视，如果没人看他他就会开始咳嗽。',     rarity:'rare' },
+  { emoji:'🌈', name:'虹灵',    species:'彩虹精灵', personality:'吉祥型', desc:'雨后才会出现的神秘存在。据说摸到彩虹尾巴能获得无尽好运，但目前没有人真正摸到过。',   rarity:'rare' },
+  // Ultra ×1
+  { emoji:'🐷', name:'嫩猪苗',  species:'???',    personality:'传说型', desc:'传说中万中无一的存在，真实身份至今成谜。据说集齐全部图鉴后，她会亲自来拜访岛主，带来一个只对图鉴完成者才能听到的秘密。', rarity:'ultra' },
 ];
 
-const COLORS=[
+// ──────────────────────────────────────────
+//  SOUND ENGINE  (Web Audio API)
+// ──────────────────────────────────────────
+const AudioCtx = window.AudioContext || window.webkitAudioContext;
+let _actx = null;
+function ctx() {
+  if (!_actx) _actx = new AudioCtx();
+  if (_actx.state === 'suspended') _actx.resume();
+  return _actx;
+}
+
+function playTick(vol = 0.18) {
+  const c = ctx(), o = c.createOscillator(), g = c.createGain();
+  o.connect(g); g.connect(c.destination);
+  o.frequency.value = 700 + Math.random() * 300;
+  g.gain.setValueAtTime(vol, c.currentTime);
+  g.gain.exponentialRampToValueAtTime(0.001, c.currentTime + 0.055);
+  o.start(); o.stop(c.currentTime + 0.055);
+}
+
+function playSpinStart() {
+  const c = ctx(), o = c.createOscillator(), g = c.createGain();
+  o.connect(g); g.connect(c.destination);
+  o.type = 'sawtooth';
+  o.frequency.setValueAtTime(260, c.currentTime);
+  o.frequency.exponentialRampToValueAtTime(90, c.currentTime + 0.28);
+  g.gain.setValueAtTime(0.22, c.currentTime);
+  g.gain.exponentialRampToValueAtTime(0.001, c.currentTime + 0.28);
+  o.start(); o.stop(c.currentTime + 0.28);
+}
+
+function playRevealSound(rarity) {
+  const c = ctx();
+  if (rarity === 'normal') {
+    [523, 659, 784].forEach((freq, i) => {
+      const o = c.createOscillator(), g = c.createGain();
+      o.connect(g); g.connect(c.destination);
+      o.type = 'sine'; o.frequency.value = freq;
+      const t = c.currentTime + i * 0.11;
+      g.gain.setValueAtTime(0.001, t);
+      g.gain.linearRampToValueAtTime(0.28, t + 0.03);
+      g.gain.exponentialRampToValueAtTime(0.001, t + 0.36);
+      o.start(t); o.stop(t + 0.36);
+    });
+  } else if (rarity === 'rare') {
+    [392, 523, 659, 784, 1047].forEach((freq, i) => {
+      const o = c.createOscillator(), g = c.createGain();
+      o.connect(g); g.connect(c.destination);
+      o.type = 'triangle'; o.frequency.value = freq;
+      const t = c.currentTime + i * 0.09;
+      g.gain.setValueAtTime(0.001, t);
+      g.gain.linearRampToValueAtTime(0.32, t + 0.03);
+      g.gain.exponentialRampToValueAtTime(0.001, t + 0.44);
+      o.start(t); o.stop(t + 0.44);
+    });
+    // shimmer layer
+    [1568, 2093].forEach((freq, i) => {
+      const o = c.createOscillator(), g = c.createGain();
+      o.connect(g); g.connect(c.destination);
+      o.type = 'sine'; o.frequency.value = freq;
+      const t = c.currentTime + 0.38 + i * 0.1;
+      g.gain.setValueAtTime(0.001, t);
+      g.gain.linearRampToValueAtTime(0.14, t + 0.04);
+      g.gain.exponentialRampToValueAtTime(0.001, t + 0.5);
+      o.start(t); o.stop(t + 0.5);
+    });
+  } else {
+    // ultra: dramatic ascending fanfare + sustained chord
+    [196, 247, 294, 392, 523, 659, 784, 1047].forEach((freq, i) => {
+      const o = c.createOscillator(), g = c.createGain();
+      o.connect(g); g.connect(c.destination);
+      o.type = 'sine'; o.frequency.value = freq;
+      const t = c.currentTime + i * 0.075;
+      g.gain.setValueAtTime(0.001, t);
+      g.gain.linearRampToValueAtTime(0.35, t + 0.04);
+      g.gain.exponentialRampToValueAtTime(0.001, t + 0.5);
+      o.start(t); o.stop(t + 0.5);
+    });
+    // sustained triumphant chord
+    [523, 659, 784, 1047].forEach(freq => {
+      const o = c.createOscillator(), g = c.createGain();
+      o.connect(g); g.connect(c.destination);
+      o.type = 'sine'; o.frequency.value = freq;
+      const t = c.currentTime + 0.6;
+      g.gain.setValueAtTime(0.22, t);
+      g.gain.exponentialRampToValueAtTime(0.001, t + 1.6);
+      o.start(t); o.stop(t + 1.6);
+    });
+  }
+}
+
+// ──────────────────────────────────────────
+//  COLLECTION SYSTEM
+// ──────────────────────────────────────────
+const COLL_KEY = 'acnh_gacha_collection';
+
+function getCollection() {
+  try { return new Set(JSON.parse(localStorage.getItem(COLL_KEY) || '[]')); }
+  catch { return new Set(); }
+}
+function saveCollection(set) {
+  localStorage.setItem(COLL_KEY, JSON.stringify([...set]));
+}
+
+let collection = getCollection();
+
+function addToCollection(idx) {
+  const isNew = !collection.has(idx);
+  collection.add(idx);
+  saveCollection(collection);
+  updateCollectionUI();
+  return isNew;
+}
+
+function updateCollectionUI() {
+  const total = GACHA.length;
+  const have = collection.size;
+  const pct = (have / total * 100).toFixed(0);
+  document.getElementById('coll-count').textContent = `${have}/${total}`;
+  document.getElementById('coll-progress-text').textContent = `${have} / ${total}`;
+  document.getElementById('coll-progress-bar').style.width = pct + '%';
+  renderCollectionGrids();
+}
+
+function renderCollectionGrids() {
+  const grids = { normal: document.getElementById('grid-normal'), rare: document.getElementById('grid-rare'), ultra: document.getElementById('grid-ultra') };
+  Object.values(grids).forEach(g => g.innerHTML = '');
+
+  GACHA.forEach((c, idx) => {
+    const have = collection.has(idx);
+    const card = document.createElement('div');
+    card.className = 'coll-card ' + (have ? 'collected' : 'locked');
+
+    const dot = (c.rarity !== 'normal') ? `<div class="rarity-dot ${c.rarity}"></div>` : '';
+    const nameStr = have ? c.name : '???';
+    const nameClass = have ? '' : 'unknown';
+    card.innerHTML = `${dot}<span class="coll-card-emoji">${c.emoji}</span><div class="coll-card-name ${nameClass}">${nameStr}</div>`;
+
+    if (have) card.onclick = () => openDetail(idx);
+    grids[c.rarity].appendChild(card);
+  });
+}
+
+function openCollection() {
+  updateCollectionUI();
+  document.getElementById('coll-panel').classList.add('open');
+}
+function closeCollection() {
+  document.getElementById('coll-panel').classList.remove('open');
+}
+
+function openDetail(idx) {
+  const c = GACHA[idx];
+  document.getElementById('cd-emoji').textContent = c.emoji;
+  document.getElementById('cd-name').textContent = c.name;
+  document.getElementById('cd-meta').textContent = `${c.species} · ${c.personality}`;
+  document.getElementById('cd-desc').textContent = c.desc;
+  const tag = document.getElementById('cd-tag');
+  tag.className = c.rarity;
+  tag.textContent = c.rarity === 'normal' ? '普通' : c.rarity === 'rare' ? '✨ 稀有' : '🌟 传说';
+  document.getElementById('coll-detail').classList.add('open');
+}
+function closeDetail() {
+  document.getElementById('coll-detail').classList.remove('open');
+}
+
+window.openCollection = openCollection;
+window.closeCollection = closeCollection;
+window.closeDetail = closeDetail;
+
+// ──────────────────────────────────────────
+//  WHEEL SETUP
+// ──────────────────────────────────────────
+const COLORS = [
   '#b8e4b8','#fcd9b0','#aae6aa','#fbb8cc','#f5cb98',
   '#f0a870','#c0c8d4','#e8d4d4','#f4f4d8','#fbbcc8',
   '#fce898','#f4d888','#c4d8f0','#ccaa80',
-  '#c4a8fc','#f0b0e8','#8aec9a','#fcd4a0','#84dccf',
-  '#fce86a'
+  '#c4a8fc','#f0b0e8','#8aec9a','#fcd4a0','#84dccf','#fce86a'
 ];
 
-const N=20, SEG=360/N; // 18° each
+const N = 20, SEG = 360 / N;
 
-function wRandom(){
-  const pool=[];
-  GACHA.forEach((c,i)=>{
-    const w=c.rarity==='normal'?10:c.rarity==='rare'?3:1;
-    for(let j=0;j<w;j++)pool.push(i);
+function wRandom() {
+  const pool = [];
+  GACHA.forEach((c, i) => {
+    const w = c.rarity === 'normal' ? 10 : c.rarity === 'rare' ? 3 : 1;
+    for (let j = 0; j < w; j++) pool.push(i);
   });
-  return pool[Math.floor(Math.random()*pool.length)];
+  return pool[Math.floor(Math.random() * pool.length)];
 }
 
-let deg=0, spinning=false;
+let deg = 0, spinning = false;
 
-function drawWheel(){
-  const cv=document.getElementById('wheel-canvas');
-  if(!cv)return;
-  const ctx=cv.getContext('2d');
-  const cx=100,cy=100,r=96;
-  ctx.clearRect(0,0,200,200);
-  const arc=2*Math.PI/N;
-  const rot=deg*Math.PI/180-Math.PI/2;
+function drawWheel() {
+  const cv = document.getElementById('wheel-canvas');
+  if (!cv) return;
+  const ctx2d = cv.getContext('2d');
+  const cx = 100, cy = 100, r = 96;
+  ctx2d.clearRect(0, 0, 200, 200);
+  const arc = 2 * Math.PI / N;
+  const rot = deg * Math.PI / 180 - Math.PI / 2;
 
-  for(let i=0;i<N;i++){
-    const a=rot+i*arc,b=a+arc;
-    ctx.beginPath();ctx.moveTo(cx,cy);ctx.arc(cx,cy,r,a,b);ctx.closePath();
-    ctx.fillStyle=COLORS[i];ctx.fill();
-    ctx.strokeStyle='rgba(255,255,255,0.55)';ctx.lineWidth=1.5;ctx.stroke();
+  for (let i = 0; i < N; i++) {
+    const a = rot + i * arc, b = a + arc;
+    ctx2d.beginPath(); ctx2d.moveTo(cx, cy); ctx2d.arc(cx, cy, r, a, b); ctx2d.closePath();
+    ctx2d.fillStyle = COLORS[i]; ctx2d.fill();
+    ctx2d.strokeStyle = 'rgba(255,255,255,0.55)'; ctx2d.lineWidth = 1.5; ctx2d.stroke();
 
-    const mid=a+arc/2;
-    const ex=cx+Math.cos(mid)*r*0.7,ey=cy+Math.sin(mid)*r*0.7;
-    ctx.save();ctx.translate(ex,ey);
-    ctx.font='15px serif';ctx.textAlign='center';ctx.textBaseline='middle';
-    ctx.fillText(GACHA[i].emoji,0,0);ctx.restore();
+    const mid = a + arc / 2;
+    const ex = cx + Math.cos(mid) * r * 0.7, ey = cy + Math.sin(mid) * r * 0.7;
+    ctx2d.save(); ctx2d.translate(ex, ey);
+    ctx2d.font = '15px serif'; ctx2d.textAlign = 'center'; ctx2d.textBaseline = 'middle';
+    ctx2d.fillText(GACHA[i].emoji, 0, 0); ctx2d.restore();
 
-    if(GACHA[i].rarity!=='normal'){
-      const dx=cx+Math.cos(mid)*r*0.46,dy=cy+Math.sin(mid)*r*0.46;
-      ctx.beginPath();ctx.arc(dx,dy,4,0,2*Math.PI);
-      ctx.fillStyle=GACHA[i].rarity==='ultra'?'#ffd700':'#ff69b4';
-      ctx.fill();
+    if (GACHA[i].rarity !== 'normal') {
+      const dx = cx + Math.cos(mid) * r * 0.46, dy = cy + Math.sin(mid) * r * 0.46;
+      ctx2d.beginPath(); ctx2d.arc(dx, dy, 4, 0, 2 * Math.PI);
+      ctx2d.fillStyle = GACHA[i].rarity === 'ultra' ? '#ffd700' : '#ff69b4';
+      ctx2d.fill();
     }
   }
 
-  // outer gold ring
-  ctx.beginPath();ctx.arc(cx,cy,r,0,2*Math.PI);
-  ctx.strokeStyle='#d4aa55';ctx.lineWidth=5;ctx.stroke();
-  // subtle inner rim highlight
-  ctx.beginPath();ctx.arc(cx,cy,r-3.5,0,2*Math.PI);
-  ctx.strokeStyle='rgba(255,255,255,0.22)';ctx.lineWidth=3;ctx.stroke();
-  // center hub
-  ctx.beginPath();ctx.arc(cx,cy,24,0,2*Math.PI);
-  ctx.fillStyle='rgba(255,251,230,.96)';ctx.fill();
-  ctx.strokeStyle='#d4aa55';ctx.lineWidth=3;ctx.stroke();
+  ctx2d.beginPath(); ctx2d.arc(cx, cy, r, 0, 2 * Math.PI);
+  ctx2d.strokeStyle = '#d4aa55'; ctx2d.lineWidth = 5; ctx2d.stroke();
+  ctx2d.beginPath(); ctx2d.arc(cx, cy, r - 3.5, 0, 2 * Math.PI);
+  ctx2d.strokeStyle = 'rgba(255,255,255,0.22)'; ctx2d.lineWidth = 3; ctx2d.stroke();
+  ctx2d.beginPath(); ctx2d.arc(cx, cy, 24, 0, 2 * Math.PI);
+  ctx2d.fillStyle = 'rgba(255,251,230,.96)'; ctx2d.fill();
+  ctx2d.strokeStyle = '#d4aa55'; ctx2d.lineWidth = 3; ctx2d.stroke();
 }
 
-function spinWheel(){
-  if(spinning)return;
-  spinning=true;
-  const btn=document.getElementById('spin-btn');
-  if(btn){btn.disabled=true;btn.textContent='🌀';}
+function spinWheel() {
+  if (spinning) return;
+  spinning = true;
+  playSpinStart();
+  const btn = document.getElementById('spin-btn');
+  if (btn) { btn.disabled = true; btn.textContent = '🌀'; }
 
-  const idx=wRandom();
-  // bring segment idx center to top pointer
-  let target=-(idx*SEG+SEG/2);
-  const minT=deg+5*360;
-  while(target<minT)target+=360;
-  target+=(Math.random()-.5)*SEG*.55; // slight variation within segment
+  const idx = wRandom();
+  let target = -(idx * SEG + SEG / 2);
+  const minT = deg + 5 * 360;
+  while (target < minT) target += 360;
+  target += (Math.random() - 0.5) * SEG * 0.55;
 
-  const dur=4200,t0=performance.now(),from=deg,delta=target-from;
-  function ease(t){return 1-Math.pow(1-t,4);}
+  const dur = 4200, t0 = performance.now(), from = deg, delta = target - from;
+  function ease(t) { return 1 - Math.pow(1 - t, 4); }
 
-  function frame(now){
-    const t=Math.min((now-t0)/dur,1);
-    deg=from+delta*ease(t);
+  let prevSeg = -1;
+  function frame(now) {
+    const t = Math.min((now - t0) / dur, 1);
+    deg = from + delta * ease(t);
     drawWheel();
-    if(t<1){requestAnimationFrame(frame);}
-    else{
-      deg=target;spinning=false;
-      if(btn){btn.disabled=false;btn.textContent='🎰';}
-      setTimeout(()=>reveal(idx),380);
+
+    // tick on segment crossing
+    const normDeg = ((deg % 360) + 360) % 360;
+    const curSeg = Math.floor(normDeg / SEG);
+    if (prevSeg !== -1 && curSeg !== prevSeg) {
+      const vol = Math.max(0.04, 0.22 * (1 - ease(t) * 0.85));
+      playTick(vol);
+    }
+    prevSeg = curSeg;
+
+    if (t < 1) { requestAnimationFrame(frame); }
+    else {
+      deg = target; spinning = false;
+      if (btn) { btn.disabled = false; btn.textContent = '🎰'; }
+      setTimeout(() => reveal(idx), 380);
     }
   }
   requestAnimationFrame(frame);
 }
 
-function reveal(idx){
-  const c=GACHA[idx];
-  if(c.rarity==='ultra'){showUltra(c);return;}
-  const modal=document.getElementById('reveal-modal');
-  document.getElementById('rv-emoji').textContent=c.emoji;
-  document.getElementById('rv-name').textContent=c.name;
-  const tag=document.getElementById('rv-tag');
-  if(c.rarity==='rare'){
-    tag.textContent='✨ 稀有！';tag.className='rv-tag rare';
-    modal.className='reveal-rare';
-    burst(42,'#ffd700');burst(28,'#ff80c0');
-  }else{
-    tag.textContent='普通';tag.className='rv-tag normal';
-    modal.className='reveal-normal';
-    burst(14,'#c8e8c8');
+function reveal(idx) {
+  const c = GACHA[idx];
+  addToCollection(idx);
+  playRevealSound(c.rarity);
+
+  if (c.rarity === 'ultra') { showUltra(c); return; }
+
+  const modal = document.getElementById('reveal-modal');
+  document.getElementById('rv-emoji').textContent = c.emoji;
+  document.getElementById('rv-name').textContent = c.name;
+  document.getElementById('rv-meta').textContent = `${c.species} · ${c.personality}`;
+  document.getElementById('rv-desc').textContent = c.desc;
+
+  const tag = document.getElementById('rv-tag');
+  if (c.rarity === 'rare') {
+    tag.textContent = '✨ 稀有！'; tag.className = 'rv-tag rare';
+    modal.className = 'reveal-rare';
+    burst(42, '#ffd700'); burst(28, '#ff80c0');
+  } else {
+    tag.textContent = '普通'; tag.className = 'rv-tag normal';
+    modal.className = 'reveal-normal';
+    burst(14, '#c8e8c8');
   }
-  const em=document.getElementById('rv-emoji');
-  em.style.animation='none';void em.offsetWidth;em.style.animation='';
-  modal.style.display='flex';
+  const em = document.getElementById('rv-emoji');
+  em.style.animation = 'none'; void em.offsetWidth; em.style.animation = '';
+  modal.style.display = 'flex';
 }
 
-function closeReveal(){document.getElementById('reveal-modal').style.display='none';}
+function closeReveal() { document.getElementById('reveal-modal').style.display = 'none'; }
 
-function showUltra(c){
-  const scr=document.getElementById('ultra-screen');
-  document.getElementById('ultra-emoji').textContent=c.emoji;
-  document.getElementById('ultra-name').textContent=c.name;
-  scr.style.display='flex';
+function showUltra(c) {
+  const scr = document.getElementById('ultra-screen');
+  document.getElementById('ultra-emoji').textContent = c.emoji;
+  document.getElementById('ultra-name').textContent = c.name;
+  document.getElementById('ultra-desc').textContent = c.desc;
+  scr.style.display = 'flex';
   document.body.classList.add('screen-shake');
-  setTimeout(()=>document.body.classList.remove('screen-shake'),600);
+  setTimeout(() => document.body.classList.remove('screen-shake'), 600);
   spawnStars(scr);
-  for(let i=0;i<7;i++)setTimeout(fireworks,i*320);
+  for (let i = 0; i < 7; i++) setTimeout(fireworks, i * 320);
 }
 
-function closeUltra(){
-  const scr=document.getElementById('ultra-screen');
-  scr.style.display='none';
-  document.querySelectorAll('.ultra-star').forEach(s=>s.remove());
+function closeUltra() {
+  document.getElementById('ultra-screen').style.display = 'none';
+  document.querySelectorAll('.ultra-star').forEach(s => s.remove());
 }
 
-function spawnStars(parent){
-  const icons=['⭐','✨','🌟','💫','⚡'];
-  for(let i=0;i<28;i++){
-    const s=document.createElement('div');
-    s.className='ultra-star';
-    s.textContent=icons[i%icons.length];
-    const dur=2+Math.random()*4;
-    s.style.cssText=`left:${Math.random()*100}%;top:${Math.random()*100}%;
-      animation-duration:${dur}s;animation-delay:${-Math.random()*dur}s;
-      font-size:${10+Math.random()*18}px;`;
+function spawnStars(parent) {
+  const icons = ['⭐', '✨', '🌟', '💫', '⚡'];
+  for (let i = 0; i < 28; i++) {
+    const s = document.createElement('div');
+    s.className = 'ultra-star';
+    s.textContent = icons[i % icons.length];
+    const dur = 2 + Math.random() * 4;
+    s.style.cssText = `left:${Math.random() * 100}%;top:${Math.random() * 100}%;animation-duration:${dur}s;animation-delay:${-Math.random() * dur}s;font-size:${10 + Math.random() * 18}px;`;
     parent.appendChild(s);
   }
 }
 
-function burst(n,color){
-  for(let i=0;i<n;i++){
-    const p=document.createElement('div');
-    const ang=Math.random()*360,dist=55+Math.random()*155,sz=5+Math.random()*7;
-    p.style.cssText=`position:fixed;left:50%;top:50%;
-      width:${sz}px;height:${sz}px;border-radius:50%;
-      background:${color};box-shadow:0 0 6px ${color};
-      pointer-events:none;z-index:999;
-      animation:particleFly 1.1s ease-out forwards;
-      animation-delay:${Math.random()*.22}s;
-      --dx:${Math.cos(ang*Math.PI/180)*dist}px;
-      --dy:${Math.sin(ang*Math.PI/180)*dist}px;`;
+function burst(n, color) {
+  for (let i = 0; i < n; i++) {
+    const p = document.createElement('div');
+    const ang = Math.random() * 360, dist = 55 + Math.random() * 155, sz = 5 + Math.random() * 7;
+    p.style.cssText = `position:fixed;left:50%;top:50%;width:${sz}px;height:${sz}px;border-radius:50%;background:${color};box-shadow:0 0 6px ${color};pointer-events:none;z-index:999;animation:particleFly 1.1s ease-out forwards;animation-delay:${Math.random() * 0.22}s;--dx:${Math.cos(ang * Math.PI / 180) * dist}px;--dy:${Math.sin(ang * Math.PI / 180) * dist}px;`;
     document.body.appendChild(p);
-    setTimeout(()=>p.remove(),1550);
+    setTimeout(() => p.remove(), 1550);
   }
 }
 
-function fireworks(){
-  const cols=['#ff0','#f80','#f0f','#0ff','#0f0','#f00','#fff'];
-  const cx=18+Math.random()*64+'%',cy=8+Math.random()*58+'%';
-  for(let i=0;i<24;i++){
-    const p=document.createElement('div');
-    const ang=Math.random()*360,dist=65+Math.random()*210,sz=3+Math.random()*6;
-    const col=cols[i%cols.length];
-    p.style.cssText=`position:fixed;left:${cx};top:${cy};
-      width:${sz}px;height:${sz}px;border-radius:50%;
-      background:${col};box-shadow:0 0 8px ${col};
-      pointer-events:none;z-index:3000;
-      animation:particleFly 1.4s ease-out forwards;
-      --dx:${Math.cos(ang*Math.PI/180)*dist}px;
-      --dy:${Math.sin(ang*Math.PI/180)*dist}px;`;
+function fireworks() {
+  const cols = ['#ff0', '#f80', '#f0f', '#0ff', '#0f0', '#f00', '#fff'];
+  const cx = 18 + Math.random() * 64 + '%', cy = 8 + Math.random() * 58 + '%';
+  for (let i = 0; i < 24; i++) {
+    const p = document.createElement('div');
+    const ang = Math.random() * 360, dist = 65 + Math.random() * 210, sz = 3 + Math.random() * 6;
+    const col = cols[i % cols.length];
+    p.style.cssText = `position:fixed;left:${cx};top:${cy};width:${sz}px;height:${sz}px;border-radius:50%;background:${col};box-shadow:0 0 8px ${col};pointer-events:none;z-index:3000;animation:particleFly 1.4s ease-out forwards;--dx:${Math.cos(ang * Math.PI / 180) * dist}px;--dy:${Math.sin(ang * Math.PI / 180) * dist}px;`;
     document.body.appendChild(p);
-    setTimeout(()=>p.remove(),1750);
+    setTimeout(() => p.remove(), 1750);
   }
 }
 
-window.spinWheel=spinWheel;
-window.closeReveal=closeReveal;
-window.closeUltra=closeUltra;
+window.spinWheel = spinWheel;
+window.closeReveal = closeReveal;
+window.closeUltra = closeUltra;
 drawWheel();
+updateCollectionUI();
 })();
+</script>
+
+<!-- BACKGROUND MUSIC -->
+<script>
+const BGM = (function () {
+  const AC = window.AudioContext || window.webkitAudioContext;
+  let _ctx = null, master = null;
+  let playing = false;
+  let melTimer = null, chordTimer = null, bassTimer = null;
+
+  const BPM = 88;
+  const Q = 60 / BPM; // quarter note ≈ 0.682 s
+
+  // C major pentatonic across 3 octaves
+  const S = [
+    130.81, 146.83, 164.81, 196.00, 220.00,   // 0–4:  C3 D3 E3 G3 A3
+    261.63, 293.66, 329.63, 392.00, 440.00,   // 5–9:  C4 D4 E4 G4 A4
+    523.25, 587.33, 659.25, 783.99, 880.00    // 10–14: C5 D5 E5 G5 A5
+  ];
+
+  function ac() {
+    if (!_ctx) {
+      _ctx = new AC();
+      master = _ctx.createGain();
+      master.gain.value = 0;
+      master.connect(_ctx.destination);
+    }
+    if (_ctx.state === 'suspended') _ctx.resume();
+    return _ctx;
+  }
+
+  // Piano-like tone: sine fundamental + 2 quiet harmonics
+  function piano(freq, t, dur, vol) {
+    const c = ac();
+    [1, 2, 3].forEach((h, i) => {
+      const v = [vol, vol * 0.20, vol * 0.05][i];
+      const o = c.createOscillator(), g = c.createGain();
+      o.type = 'sine';
+      o.frequency.value = freq * h;
+      o.connect(g); g.connect(master);
+      const atk = 0.010, dcy = 0.14;
+      g.gain.setValueAtTime(0, t);
+      g.gain.linearRampToValueAtTime(v, t + atk);
+      g.gain.exponentialRampToValueAtTime(v * 0.28, t + atk + dcy);
+      const susEnd = t + dur - 0.35;
+      if (susEnd > t + atk + dcy) g.gain.setValueAtTime(v * 0.28, susEnd);
+      g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+      o.start(t); o.stop(t + dur + 0.06);
+    });
+  }
+
+  // Time-of-day musical region
+  function tod() {
+    const h = new Date().getHours();
+    if (h >= 20 || h < 5)  return { lo: 2,  hi: 9,  vol: 0.11, spd: 1.3  }; // 深夜: 低沉、缓慢
+    if (h >= 5  && h < 7)  return { lo: 4,  hi: 11, vol: 0.13, spd: 1.1  }; // 黎明: 渐渐明亮
+    if (h >= 7  && h < 18) return { lo: 5,  hi: 13, vol: 0.16, spd: 1.0  }; // 白天: 明朗
+    return                         { lo: 3,  hi: 11, vol: 0.13, spd: 1.18 }; // 黄昏: 稍慢、温暖
+  }
+
+  let mi = 8; // melody cursor, starts at G4
+
+  function scheduleMel() {
+    if (!playing) return;
+    const c = ac();
+    const { lo, hi, vol, spd } = tod();
+    const now = c.currentTime;
+    const len = 4 + Math.floor(Math.random() * 4);
+    let cur = Math.max(lo, Math.min(hi, mi));
+
+    for (let i = 0; i < len; i++) {
+      let step = Math.floor(Math.random() * 3) - 1;
+      if (Math.random() < 0.12) step = step * 2;
+      cur = Math.max(lo, Math.min(hi, cur + step));
+      const tOff = now + i * Q * spd * (0.88 + Math.random() * 0.38);
+      const dur  = Q * spd * (Math.random() < 0.28 ? 1.75 : 1.0) * 0.90;
+      piano(S[cur], tOff, dur, vol * (0.78 + Math.random() * 0.22));
+
+      // Occasional soft harmony (a 3rd above/below)
+      if (Math.random() < 0.16) {
+        const hi2 = Math.max(lo, Math.min(hi, cur + (Math.random() < 0.5 ? 2 : -2)));
+        piano(S[hi2], tOff + 0.018, dur * 0.85, vol * 0.40);
+      }
+    }
+    mi = cur;
+
+    const phraseMs = len * Q * spd * 1000;
+    const pauseMs  = Q * spd * 1000 * (1.8 + Math.random() * 2.5);
+    melTimer = setTimeout(scheduleMel, phraseMs + pauseMs);
+  }
+
+  function scheduleChord() {
+    if (!playing) return;
+    const c = ac();
+    const { vol, spd } = tod();
+    const now = c.currentTime;
+
+    // Soft pad chords (an octave below melody), strum-like
+    const shapes = [[5, 8, 10], [7, 10, 12], [5, 7, 9], [8, 10, 13]];
+    const sh = shapes[Math.floor(Math.random() * shapes.length)];
+    sh.forEach((si, i) => {
+      setTimeout(() => {
+        if (!playing) return;
+        piano(S[si] * 0.5, ac().currentTime, Q * spd * 5.5, vol * 0.30);
+      }, i * 40);
+    });
+
+    chordTimer = setTimeout(scheduleChord, Q * spd * 1000 * (5 + Math.random() * 4));
+  }
+
+  function scheduleBass() {
+    if (!playing) return;
+    const c = ac();
+    const { vol, spd } = tod();
+    const now = c.currentTime;
+
+    // Very soft bass: C2, G2, or D2
+    const freqs = [65.41, 98.00, 73.42];
+    const f = freqs[Math.floor(Math.random() * freqs.length)];
+    piano(f, now, Q * spd * 2.2, vol * 0.50);
+
+    bassTimer = setTimeout(scheduleBass, Q * spd * 1000 * (2 + Math.random() * 2.5));
+  }
+
+  function start() {
+    if (playing) return;
+    ac();
+    playing = true;
+    master.gain.cancelScheduledValues(_ctx.currentTime);
+    master.gain.setValueAtTime(master.gain.value, _ctx.currentTime);
+    master.gain.linearRampToValueAtTime(1.0, _ctx.currentTime + 4.0);
+    scheduleMel();
+    setTimeout(scheduleChord, 1800);
+    setTimeout(scheduleBass,  900);
+  }
+
+  function stop() {
+    if (!playing) return;
+    playing = false;
+    clearTimeout(melTimer); clearTimeout(chordTimer); clearTimeout(bassTimer);
+    if (master && _ctx) {
+      master.gain.cancelScheduledValues(_ctx.currentTime);
+      master.gain.setValueAtTime(master.gain.value, _ctx.currentTime);
+      master.gain.linearRampToValueAtTime(0, _ctx.currentTime + 2.5);
+    }
+  }
+
+  function toggle() { playing ? stop() : start(); return playing; }
+
+  return { start, stop, toggle, isPlaying: () => playing };
+})();
+
+// Auto-start on first user interaction (browser autoplay policy)
+document.addEventListener('click', function _boot() {
+  BGM.start();
+  _updateMusicBtn();
+  document.removeEventListener('click', _boot);
+}, { capture: true });
+
+function toggleBGM() {
+  BGM.toggle();
+  _updateMusicBtn();
+}
+
+function _updateMusicBtn() {
+  const btn = document.getElementById('music-btn');
+  const lbl = document.getElementById('music-label');
+  if (!btn) return;
+  if (BGM.isPlaying()) {
+    btn.classList.remove('muted');
+    lbl.textContent = '音乐';
+  } else {
+    btn.classList.add('muted');
+    lbl.textContent = '已静音';
+  }
+}
+
+window.toggleBGM = toggleBGM;
 </script>
 </body>
 </html>
