@@ -660,6 +660,39 @@ body.screen-shake{animation:screenShake .5s ease-out;}
   30%     { transform: scale(1.18) rotate(-8deg); }
   60%     { transform: scale(1.1) rotate(6deg); }
 }
+
+/* ===== PASSWORD LOCK MODAL ===== */
+#lock-modal{display:none;position:fixed;inset:0;z-index:900;align-items:center;justify-content:center;}
+#lock-backdrop{position:absolute;inset:0;background:rgba(0,0,0,0.62);}
+#lock-card{position:relative;background:rgba(255,251,230,.98);border-radius:28px;padding:32px 42px 28px;text-align:center;z-index:1;border:4px solid #d4aa55;box-shadow:0 16px 44px rgba(0,0,0,.38);min-width:290px;animation:revealPop .4s cubic-bezier(.34,1.56,.64,1) forwards;}
+#lock-icon{font-size:40px;margin-bottom:8px;}
+#lock-title{font-size:21px;font-weight:900;color:#5a3a10;margin-bottom:6px;}
+#lock-subtitle{font-size:13px;color:#9a7820;font-weight:700;margin-bottom:20px;line-height:1.6;}
+#lock-input{width:100%;padding:11px 16px;border-radius:14px;border:2px solid #d4aa55;font-size:24px;font-weight:900;font-family:'Nunito',sans-serif;text-align:center;color:#3a2a10;background:rgba(255,245,200,.65);outline:none;letter-spacing:10px;margin-bottom:8px;transition:border-color .2s;}
+#lock-input:focus{border-color:#a07020;}
+#lock-error{font-size:12px;color:#c04040;font-weight:800;min-height:18px;margin-bottom:10px;}
+#lock-submit{background:linear-gradient(135deg,#6cc06c,#4aa04a);color:#fff;border:none;border-radius:20px;padding:10px 36px;font-size:15px;font-weight:800;font-family:'Nunito',sans-serif;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.22);transition:transform .1s;}
+#lock-submit:hover{transform:scale(1.06);}
+
+/* ===== SEASON CHEAT GLOW ===== */
+#season-badge.cheat-active{border-color:#ffd700 !important;animation:cheatGlow 1s ease-in-out infinite alternate;}
+@keyframes cheatGlow{
+  from{box-shadow:0 0 10px rgba(255,215,0,.55),0 4px 14px rgba(0,0,0,.15);}
+  to  {box-shadow:0 0 28px rgba(255,215,0,.95),0 0 50px rgba(255,180,0,.55);}
+}
+
+/* ===== MUSIC SELECTOR ===== */
+#music-selector{display:none;position:fixed;bottom:68px;left:22px;background:rgba(255,251,230,.98);border:3px solid #d4aa55;border-radius:20px;padding:14px 16px 12px;z-index:300;box-shadow:0 8px 28px rgba(0,0,0,.28);min-width:196px;}
+#music-selector.open{display:block;}
+.music-sel-title{font-size:10px;font-weight:800;letter-spacing:2px;color:#9a7820;text-transform:uppercase;margin-bottom:10px;padding:0 2px;}
+.music-option{display:flex;align-items:center;gap:9px;padding:8px 10px;border-radius:12px;cursor:pointer;font-size:13px;font-weight:800;color:#5a3a10;transition:background .12s;}
+.music-option:hover{background:rgba(212,170,85,.18);}
+.music-option.active{background:rgba(108,192,108,.24);color:#2a6a2a;}
+.music-opt-icon{font-size:17px;width:22px;text-align:center;}
+.music-divider{width:100%;height:1px;background:rgba(212,170,85,.35);margin:6px 0;}
+.music-playpause{display:flex;align-items:center;justify-content:space-between;padding:6px 10px 10px;border-bottom:1px solid rgba(212,170,85,.3);margin-bottom:8px;}
+.music-playpause span{font-size:12px;font-weight:800;color:#7a5a18;}
+#music-toggle-btn{background:linear-gradient(135deg,#6cc06c,#4aa04a);color:#fff;border:none;border-radius:14px;padding:4px 14px;font-size:12px;font-weight:800;font-family:'Nunito',sans-serif;cursor:pointer;}
 </style>
 </head>
 <body>
@@ -1100,7 +1133,7 @@ setInterval(pickWeather, 3600000);
 </button>
 
 <!-- MUSIC BUTTON -->
-<button id="music-btn" class="muted" onclick="toggleBGM()">
+<button id="music-btn" class="muted" onclick="toggleMusicSelector()">
   <span id="music-note">🎵</span><span id="music-label">音乐</span>
 </button>
 
@@ -1167,6 +1200,43 @@ const GACHA = [
   // Ultra ×1
   { emoji:'🐷', name:'嫩猪苗',  species:'???',    personality:'传说型', desc:'传说中万中无一的存在，真实身份至今成谜。据说集齐全部图鉴后，她会亲自来拜访岛主，带来一个只对图鉴完成者才能听到的秘密。', rarity:'ultra' },
 ];
+
+// ──────────────────────────────────────────
+//  SPIN LOCK SYSTEM
+// ──────────────────────────────────────────
+const SPIN_LIMIT = 15;
+const LOCK_PWD   = '0524';
+const SPIN_KEY   = 'acnh_spin_count';
+
+function getSpinCount() { return parseInt(localStorage.getItem(SPIN_KEY) || '0'); }
+function setSpinCount(n) { localStorage.setItem(SPIN_KEY, String(n)); }
+
+function showLockModal() {
+  const m = document.getElementById('lock-modal');
+  m.style.display = 'flex';
+  const inp = document.getElementById('lock-input');
+  inp.value = '';
+  document.getElementById('lock-error').textContent = '';
+  setTimeout(() => inp.focus(), 80);
+}
+
+function checkLockPassword() {
+  const val = document.getElementById('lock-input').value;
+  if (val === LOCK_PWD) {
+    setSpinCount(0);
+    document.getElementById('lock-modal').style.display = 'none';
+  } else {
+    document.getElementById('lock-error').textContent = '密码错误，请再试 ✕';
+    document.getElementById('lock-input').value = '';
+    document.getElementById('lock-input').focus();
+  }
+}
+
+// ──────────────────────────────────────────
+//  GUARANTEE-ULTRA CHEAT  (double-click season badge)
+// ──────────────────────────────────────────
+let guaranteeUltra = false;
+let _sznClicks = 0, _sznTimer = null;
 
 // ──────────────────────────────────────────
 //  SOUND ENGINE  (Web Audio API)
@@ -1351,6 +1421,11 @@ const COLORS = [
 const N = 20, SEG = 360 / N;
 
 function wRandom() {
+  if (guaranteeUltra) {
+    guaranteeUltra = false;
+    document.getElementById('season-badge').classList.remove('cheat-active');
+    return GACHA.findIndex(c => c.rarity === 'ultra');
+  }
   const pool = [];
   GACHA.forEach((c, i) => {
     const w = c.rarity === 'normal' ? 10 : c.rarity === 'rare' ? 3 : 1;
@@ -1401,6 +1476,7 @@ function drawWheel() {
 
 function spinWheel() {
   if (spinning) return;
+  if (getSpinCount() >= SPIN_LIMIT) { showLockModal(); return; }
   spinning = true;
   playSpinStart();
   const btn = document.getElementById('spin-btn');
@@ -1433,6 +1509,7 @@ function spinWheel() {
     if (t < 1) { requestAnimationFrame(frame); }
     else {
       deg = target; spinning = false;
+      setSpinCount(getSpinCount() + 1);
       if (btn) { btn.disabled = false; btn.textContent = '🎰'; }
       setTimeout(() => reveal(idx), 380);
     }
@@ -1525,18 +1602,63 @@ function fireworks() {
 window.spinWheel = spinWheel;
 window.closeReveal = closeReveal;
 window.closeUltra = closeUltra;
+window.checkLockPassword = checkLockPassword;
+
+// Season badge: two clicks within 600 ms → guarantee next ultra
+document.getElementById('season-badge').addEventListener('click', function () {
+  _sznClicks++;
+  clearTimeout(_sznTimer);
+  if (_sznClicks >= 2) {
+    guaranteeUltra = true;
+    _sznClicks = 0;
+    this.classList.add('cheat-active');
+  } else {
+    _sznTimer = setTimeout(() => { _sznClicks = 0; }, 600);
+  }
+});
+
 drawWheel();
 updateCollectionUI();
 })();
 </script>
 
 <!-- BACKGROUND MUSIC -->
+<!-- PASSWORD LOCK MODAL -->
+<div id="lock-modal">
+  <div id="lock-backdrop"></div>
+  <div id="lock-card">
+    <div id="lock-icon">🔒</div>
+    <div id="lock-title">转盘已锁定</div>
+    <div id="lock-subtitle">连续抽卡已达 15 次上限<br>请输入密码以继续</div>
+    <input id="lock-input" type="password" maxlength="6" placeholder="••••" autocomplete="off"
+           onkeydown="if(event.key==='Enter')checkLockPassword()">
+    <div id="lock-error"></div>
+    <button id="lock-submit" onclick="checkLockPassword()">确认 ✓</button>
+  </div>
+</div>
+
+<!-- MUSIC SELECTOR -->
+<div id="music-selector">
+  <div class="music-playpause">
+    <span id="music-playing-label">🎵 正在播放</span>
+    <button id="music-toggle-btn" onclick="doToggleBGM()">暂停</button>
+  </div>
+  <div class="music-sel-title">选择风格</div>
+  <div class="music-option active" id="opt-forest" onclick="selectMusicStyle('forest')"><span class="music-opt-icon">🌿</span>森友会风</div>
+  <div class="music-option" id="opt-jazz"   onclick="selectMusicStyle('jazz')"  ><span class="music-opt-icon">🎷</span>夜晚爵士</div>
+  <div class="music-option" id="opt-lofi"   onclick="selectMusicStyle('lofi')"  ><span class="music-opt-icon">🎧</span>Lo-fi 放松</div>
+  <div class="music-divider"></div>
+  <div class="music-option" id="opt-custom" onclick="document.getElementById('music-upload-input').click()"><span class="music-opt-icon">📁</span>上传音乐文件</div>
+  <input type="file" id="music-upload-input" accept="audio/*" style="display:none" onchange="loadCustomMusic(event)">
+</div>
+
 <script>
 const BGM = (function () {
   const AC = window.AudioContext || window.webkitAudioContext;
   let _ctx = null, master = null;
   let playing = false;
   let melTimer = null, chordTimer = null, bassTimer = null;
+  let bgmStyle = 'forest';
 
   const BPM = 88;
   const Q = 60 / BPM; // quarter note ≈ 0.682 s
@@ -1579,13 +1701,24 @@ const BGM = (function () {
     });
   }
 
-  // Time-of-day musical region
+  // Time-of-day musical region (varies by bgmStyle)
   function tod() {
     const h = new Date().getHours();
-    if (h >= 20 || h < 5)  return { lo: 2,  hi: 9,  vol: 0.11, spd: 1.3  }; // 深夜: 低沉、缓慢
-    if (h >= 5  && h < 7)  return { lo: 4,  hi: 11, vol: 0.13, spd: 1.1  }; // 黎明: 渐渐明亮
-    if (h >= 7  && h < 18) return { lo: 5,  hi: 13, vol: 0.16, spd: 1.0  }; // 白天: 明朗
-    return                         { lo: 3,  hi: 11, vol: 0.13, spd: 1.18 }; // 黄昏: 稍慢、温暖
+    if (bgmStyle === 'jazz') {
+      // 夜晚爵士: 低音区、偏慢、略带蓝调
+      if (h >= 20 || h < 5)  return { lo: 0, hi: 7,  vol: 0.10, spd: 1.7 };
+      if (h >= 7  && h < 18) return { lo: 2, hi: 9,  vol: 0.12, spd: 1.4 };
+      return                         { lo: 1, hi: 8,  vol: 0.11, spd: 1.5 };
+    }
+    if (bgmStyle === 'lofi') {
+      // Lo-fi: 极低音区、极慢、空灵
+      return { lo: 0, hi: 5, vol: 0.09, spd: 2.2 };
+    }
+    // 默认 forest 风格
+    if (h >= 20 || h < 5)  return { lo: 2,  hi: 9,  vol: 0.11, spd: 1.3  };
+    if (h >= 5  && h < 7)  return { lo: 4,  hi: 11, vol: 0.13, spd: 1.1  };
+    if (h >= 7  && h < 18) return { lo: 5,  hi: 13, vol: 0.16, spd: 1.0  };
+    return                         { lo: 3,  hi: 11, vol: 0.13, spd: 1.18 };
   }
 
   let mi = 8; // melody cursor, starts at G4
@@ -1677,35 +1810,113 @@ const BGM = (function () {
 
   function toggle() { playing ? stop() : start(); return playing; }
 
-  return { start, stop, toggle, isPlaying: () => playing };
+  function setStyle(s) {
+    bgmStyle = s;
+    if (playing) { stop(); setTimeout(start, 300); }
+  }
+
+  return { start, stop, toggle, isPlaying: () => playing, setStyle };
 })();
 
-// Auto-start on first user interaction (browser autoplay policy)
-document.addEventListener('click', function _boot() {
-  BGM.start();
-  _updateMusicBtn();
-  document.removeEventListener('click', _boot);
-}, { capture: true });
+// ── Music selector state ──
+let _musicSelectorOpen = false;
+let _currentStyle = 'forest';
+let _customAudio = null;
 
-function toggleBGM() {
-  BGM.toggle();
-  _updateMusicBtn();
+function isMusicPlaying() {
+  if (_customAudio && !_customAudio.paused) return true;
+  return BGM.isPlaying();
 }
 
 function _updateMusicBtn() {
   const btn = document.getElementById('music-btn');
   const lbl = document.getElementById('music-label');
+  const togBtn = document.getElementById('music-toggle-btn');
+  const playLbl = document.getElementById('music-playing-label');
   if (!btn) return;
-  if (BGM.isPlaying()) {
+  const playing = isMusicPlaying();
+  if (playing) {
     btn.classList.remove('muted');
-    lbl.textContent = '音乐';
+    lbl.textContent = _currentStyle === 'custom' ? '自选音乐' :
+                      { forest:'森友会风', jazz:'夜晚爵士', lofi:'Lo-fi' }[_currentStyle] || '音乐';
   } else {
     btn.classList.add('muted');
     lbl.textContent = '已静音';
   }
+  if (togBtn) togBtn.textContent = playing ? '暂停' : '播放';
+  if (playLbl) playLbl.textContent = playing ? '🎵 正在播放' : '🔇 已暂停';
 }
 
-window.toggleBGM = toggleBGM;
+// Auto-start on first user interaction (browser autoplay policy)
+document.addEventListener('click', function _boot() {
+  if (!_customAudio) BGM.start();
+  _updateMusicBtn();
+  document.removeEventListener('click', _boot);
+}, { capture: true });
+
+// 主按钮: 开关选择器面板
+function toggleMusicSelector() {
+  _musicSelectorOpen = !_musicSelectorOpen;
+  document.getElementById('music-selector').classList.toggle('open', _musicSelectorOpen);
+}
+
+// 选择器内播放/暂停按钮
+function doToggleBGM() {
+  if (_customAudio) {
+    _customAudio.paused ? _customAudio.play() : _customAudio.pause();
+  } else {
+    BGM.toggle();
+  }
+  _updateMusicBtn();
+}
+
+// 选择合成风格
+function selectMusicStyle(style) {
+  _currentStyle = style;
+  if (_customAudio) { _customAudio.pause(); _customAudio = null; }
+  BGM.setStyle(style);
+  if (!BGM.isPlaying()) BGM.start();
+  document.querySelectorAll('.music-option').forEach(el => el.classList.remove('active'));
+  const opt = document.getElementById('opt-' + style);
+  if (opt) opt.classList.add('active');
+  _updateMusicBtn();
+  toggleMusicSelector();
+}
+
+// 上传本地音乐文件
+function loadCustomMusic(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  BGM.stop();
+  if (_customAudio) _customAudio.pause();
+  _customAudio = new Audio(URL.createObjectURL(file));
+  _customAudio.loop = true;
+  _customAudio.volume = 0.75;
+  _customAudio.play().catch(() => {});
+  _currentStyle = 'custom';
+  document.querySelectorAll('.music-option').forEach(el => el.classList.remove('active'));
+  const optC = document.getElementById('opt-custom');
+  if (optC) optC.classList.add('active');
+  _updateMusicBtn();
+  if (_musicSelectorOpen) toggleMusicSelector();
+}
+
+// 点击选择器外部关闭
+document.addEventListener('click', function(e) {
+  if (!_musicSelectorOpen) return;
+  const sel = document.getElementById('music-selector');
+  const btn = document.getElementById('music-btn');
+  const upload = document.getElementById('music-upload-input');
+  if (!sel.contains(e.target) && !btn.contains(e.target) && e.target !== upload) {
+    _musicSelectorOpen = false;
+    sel.classList.remove('open');
+  }
+});
+
+window.toggleMusicSelector = toggleMusicSelector;
+window.doToggleBGM = doToggleBGM;
+window.selectMusicStyle = selectMusicStyle;
+window.loadCustomMusic = loadCustomMusic;
 </script>
 </body>
 </html>
